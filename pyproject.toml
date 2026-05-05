@@ -7,10 +7,8 @@ name = "clyo"
 description = "Give your Python scripts various flavours of CLI!"
 readme = "README.md"
 license = { file = "LICENSE" }
-authors = [
-  { name = "Axel Voitier", email = "axel.voitier@gmail.com" },
-]
-requires-python = "~=3.8"
+authors = [{ name = "Axel Voitier", email = "axel.voitier@gmail.com" }]
+requires-python = ">=3.8"
 # keywords = []
 classifiers = [
   # "Development Status :: 1 - Planning",
@@ -22,11 +20,11 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.8",  # Py3.8 EOL: 2024/10
-  "Programming Language :: Python :: 3.9",  # Py 3.9 EOL: 2025/10
-  "Programming Language :: Python :: 3.10",  # Py 3.10 EOL: 2026/10
-  "Programming Language :: Python :: 3.11",  # Py 3.11 EOL: 2027/10
-  "Programming Language :: Python :: 3.12",  # Py 3.12 EOL: 2028/10
+  "Programming Language :: Python :: 3.8",                           # Py3.8 EOL: 2024/10
+  "Programming Language :: Python :: 3.9",                           # Py 3.9 EOL: 2025/10
+  "Programming Language :: Python :: 3.10",                          # Py 3.10 EOL: 2026/10
+  "Programming Language :: Python :: 3.11",                          # Py 3.11 EOL: 2027/10
+  "Programming Language :: Python :: 3.12",                          # Py 3.12 EOL: 2028/10
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
   "Typing :: Typed",
@@ -34,11 +32,7 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dynamic = ["version"]
-dependencies = [
-  "typer[all]",
-  "prompt_toolkit",
-  "typing-extensions",
-]
+dependencies = ["typer", "prompt_toolkit", "typing-extensions"]
 
 # [project.optional-dependencies]
 # an_extra = [ ]
@@ -70,9 +64,7 @@ include = [
 package = "clyo"
 
 [tool.hatch.envs.lint]
-dependencies = [
-  "ruff",
-]
+dependencies = ["ruff"]
 
 [tool.hatch.envs.lint.scripts]
 check = "ruff check clyo tests"
@@ -87,37 +79,20 @@ dependencies = [
 [tool.hatch.envs.typing.scripts]
 check-pyright = "pyright clyo tests"
 check-mypy = "mypy clyo tests"
-check = [
-  "check-pyright",
-  "check-mypy",
-]
+check = ["check-pyright", "check-mypy"]
 
 [[tool.hatch.envs.typing.matrix]]
-python = [
-  "3.10",
-  "3.11",
-  "3.12",
-]
+python = ["3.10", "3.11", "3.12"]
 
 [tool.hatch.envs.tests]
-dependencies = [
-  "pytest",
-  "pytest-cov",
-  "pytest-html",
-]
+dependencies = ["pytest", "pytest-cov", "pytest-html"]
 
 [tool.hatch.envs.tests.scripts]
 run = "py.test --cov=clyo --cov-report=term-missing --cov-report=xml:cov.xml tests"
 run-x = "py.test --cov=clyo --cov-report=term-missing --cov-report=xml:cov.xml -x tests"
 
 [[tool.hatch.envs.tests.matrix]]
-python = [
-  "3.8",
-  "3.9",
-  "3.10",
-  "3.11",
-  "3.12",
-]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
 [tool.hatch.envs.doc]
 detached = true
@@ -151,23 +126,23 @@ line-length = 100
 select = ["ALL"]
 ignore = [
   # "C408",  # "Unnecessary" `dict`, `list` or `tuple` calls instead of literals
-  "Q",  # Quotes
+  "Q",       # Quotes
   "ANN101",  # Annotate self
   "ANN102",  # Annotate cls
   "SLF001",  # Access private _member
   "RET505",  # Else after return
   "ARG002",  # Unused method argument
-  "PLW0603",  # Global statement to update variable
-  "PLR0913",  # Too many arguments
+  "PLW0603", # Global statement to update variable
+  "PLR0913", # Too many arguments
 
-  "D",  # Temporarily: docstrings
-  "ERA001",  # Temporarily: commented out code
+  "D",      # Temporarily: docstrings
+  "ERA001", # Temporarily: commented out code
 ]
 
 [tool.ruff.per-file-ignores]
 "tests/*" = [
-  "D",  # Docstrings
-  "S101",  # Use of assert
+  "D",    # Docstrings
+  "S101", # Use of assert
 ]
 
 [tool.ruff.lint.flake8-comprehensions]
@@ -190,13 +165,8 @@ quote-style = "single"
 skip-magic-trailing-comma = false
 
 [tool.pyright]
-include = [
-  "clyo",
-  "tests",
-]
-exclude = [
-  "tests/typing",
-]
+include = ["clyo", "tests"]
+exclude = ["tests/typing"]
 typeCheckingMode = "strict"
 reportPrivateUsage = "none"
 reportImplicitOverride = "error"

@@ -83,6 +83,7 @@ def _print_commands_panel_with_tree(
     markup_mode: MarkupMode,
     console: Console,
     ctx: Context,
+    **kwargs: object,
 ) -> None:
     """Reimplements to (recursively) show subcommands of given commands, in a tree form"""
 
