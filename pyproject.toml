@@ -32,7 +32,7 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dynamic = ["version"]
-dependencies = ["typer", "prompt_toolkit", "typing-extensions"]
+dependencies = ["typer~=0.25.0", "prompt_toolkit", "typing-extensions"]
 
 # [project.optional-dependencies]
 # an_extra = [ ]
